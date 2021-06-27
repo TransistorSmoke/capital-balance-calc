@@ -22,39 +22,16 @@ export class InputFormComponent implements OnInit {
   isFormValid: boolean = false;
   formData: {} = {};
   isHidden: boolean = true;
+  
 
 
   /* NgForm object is used as a source of our input data. 
    * NgForm is a readily exposed object for us to access. We can access the form input data from here.
   */
   onDataSubmit(form: NgForm) { 
+
+    console.log(form);
     
-    // Dummy data for test
-    // ------------------- 
-      // this.isFormValid = true;   
-      // this.formData = {
-      //   salary: 100000,
-      //   pctContribution: 9.5,
-      //   pctInflation: 3,
-      //   pctEarnings: 7.5,
-      //   pctFees: 1.5,
-      //   pctTax: 15,
-      //   pctWithdrawal: 5,
-      //   ageStartWithdrawal: null,
-      //   ageStopContribution: null
-      // }
-
-    // if (form.status === "VALID") {   
-      
-    //   this.isHidden = true;
-    //   this.isFormValid = true;
-    //   this.formData = form.value;
-    // } else {
-    //   this.isHidden = false;
-    // }
-
-
-
     if (form.status === "VALID") {
       this.isFormValid = true;
       this.isHidden = true;
@@ -66,16 +43,11 @@ export class InputFormComponent implements OnInit {
 
 
 
-
-
-
-
-
-
-
-
-  // INSTEAD, perform the data calculations here and share them to the table and chart components
-  // Set default variables for our table
+  /* Initially, data calculations are done at the table component. I had difficulty passing it to the sibling component (chart component).
+   * Therefore, to simplify and make passing of processed data to both table and chart components, the calculations are done at the form element level.
+   */
+  
+  //--- Set default variables for our table ---
 
   // User's input form data
   salary: number = 0;
@@ -174,7 +146,4 @@ export class InputFormComponent implements OnInit {
     this.endBalance = 0,
     this.yearlyOutputData = []
   }
-
-
-
 }

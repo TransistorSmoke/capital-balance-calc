@@ -1,7 +1,7 @@
 <!-- 
     * Req #1 - ngModel in the <input> element, to tell Angular that it is a control (of the form).
     * ngModel is a directive from the FormsModule package.
-    * Req #2 - the control's name (name attr), Angular uses this to identify which form input value (is identifiable) needs to be tracked
+    * Req #2 - the control's name (name attr), Angular uses this to identify which form input name that needs to be tracked
 -->
 
 <div id="inputBlock">  
@@ -62,11 +62,6 @@
 </div>
 
 <app-output-view  *ngIf="isFormValid" [dataForView]= "formData" [hidden]="!isHidden"></app-output-view>
-<!-- <app-output-view  *ngIf="isFormValid" [dataForView]= "formData" [hidden]="!isHidden"></app-output-view> -->
-
-<!-- <div class = "output-chart-table" hidden>    
-    <app-output-table [formDataToProcess] = "formInputData"></app-output-table>
-</div> -->
 
 
 <!-- 
@@ -84,11 +79,9 @@
           * Scalability of this app is not considered. TD forms is good for this.
 
 
-
-
-  INFO: ACQUIRING THE FORM'S ALL INPUT DATA 
-  -----------------------------------------
-  * NOT FEASIBLE
+  ACQUIRING THE FORM'S ALL INPUT DATA 
+  ------------------------------------
+  * DIFFICULT 
       * On the form element, local reference #formInputData passed to onDataSubmit() method will return HTMLFormElement
           * HTMLFormElement is DOM format - difficult to access values we need and do other processes
 

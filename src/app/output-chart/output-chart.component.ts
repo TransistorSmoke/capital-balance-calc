@@ -8,41 +8,40 @@ import { Chart, DatasetController, registerables}  from 'chart.js';
 })
 export class OutputChartComponent implements OnInit {
 
-    myChart: any;
+    myChart: any = '';
     graphData: any;
     labels: number[] = [];
 
     @Input() dataChart: any;
 
-    ngOnInit(): void {
-        Chart.register(...registerables);
 
-        
+    ngOnInit(): void {
+      
+    }
+
+    renderChart() {
+        if (this.myChart) {
+            this.myChart.destroy();
+        }
+
+        Chart.register(...registerables);
         const labelYears = [];
         const dataStartBalance = [];
         
-        for (let x = 0; x < this.dataChart.length; x++) {
-            labelYears.push(this.dataChart[x].year);
-            dataStartBalance.push(this.dataChart[x].startBalance);
+        if (this.dataChart) {
+            for (let x = 0; x < this.dataChart.length; x++) {
+                labelYears.push(this.dataChart[x].year);
+                dataStartBalance.push(this.dataChart[x].startBalance);
+            }
         }
 
-
-        // console.log(labelYears);
-        // console.log(dataStartBalance);
-
-        for (let x = 2020; x < 2035; x++) {
-            this.labels.push(x);
-        }
-
-        this.graphData = {
-            // labels: this.labels,                // The data on the X-axis (our years)
+        this.graphData = {            
             labels: labelYears,
             datasets: [{
-            label: 'Yearly Contribution Chart',
-            // data: [65, 59, 80, 81, 56, 55, 40], // The data on Y-axis (our start balance)
+            label: 'Yearly Contribution Chart',            
             data: dataStartBalance,
             fill: false,
-            borderColor: 'rgb(75, 192, 192)',
+            borderColor: 'rgb(86, 109, 201)',
             tension: 0.1
             }]
         }  
@@ -53,11 +52,20 @@ export class OutputChartComponent implements OnInit {
             options: {
                 scales: {
                     y: {
-                        beginAtZero: true
+                        ticks: {
+                            // Include a dollar sign in the ticks
+                            callback: function(value, index, values) {
+                                return '$ ' + value;
+                            }
+                        }
                     }
                 }
             }
         }); 
     }
-    
+
+    ngOnChanges() {
+        // Update our graph everytime our form data changes
+        this.renderChart();
+    }    
 }
