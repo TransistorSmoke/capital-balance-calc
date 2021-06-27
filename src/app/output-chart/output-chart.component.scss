@@ -1,8 +1,20 @@
-#canvas{
-    display: block;    
-    border: 2px solid gray;
-    width: 80%;    
-    margin: 0 auto 50px;
+.chart-container {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    margin: 16px 0;
 
-    display: none;
+    h1 {        
+        color: #566dc9;
+        text-align: center;
+        text-transform: uppercase;
+    }
+    
+    #canvas{
+        display: block;    
+        border: 2px solid gray;
+        width: 80%;    
+        margin: 50px auto;
+        display: none;
+    }
 }
+

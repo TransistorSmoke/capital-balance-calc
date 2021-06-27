@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { Chart, registerables}  from 'chart.js';
+import { Chart, DatasetController, registerables}  from 'chart.js';
 
 @Component({
   selector: 'app-output-chart',
@@ -8,40 +8,56 @@ import { Chart, registerables}  from 'chart.js';
 })
 export class OutputChartComponent implements OnInit {
 
-  myChart: any;
-  graphData: any;
-  labels: number[] = [];
+    myChart: any;
+    graphData: any;
+    labels: number[] = [];
 
-  @Input() dataChart: any;
-  
-  ngOnInit(): void {
-      Chart.register(...registerables);
+    @Input() dataChart: any;
 
-      for (let x = 2020; x < 2035; x++) {
-          this.labels.push(x);
-      }
+    ngOnInit(): void {
+        Chart.register(...registerables);
 
-      this.graphData = {
-          labels: this.labels,                // The data on the X-axis (our years)
-          datasets: [{
-          label: 'My First Dataset',
-          data: [65, 59, 80, 81, 56, 55, 40], // The data on Y-axis (our start balance)
-          fill: false,
-          borderColor: 'rgb(75, 192, 192)',
-          tension: 0.1
-          }]
-      }  
+        
+        const labelYears = [];
+        const dataStartBalance = [];
+        
+        for (let x = 0; x < this.dataChart.length; x++) {
+            labelYears.push(this.dataChart[x].year);
+            dataStartBalance.push(this.dataChart[x].startBalance);
+        }
 
-      this.myChart = new Chart("canvas", {
-          type: 'line',
-          data: this.graphData,
-          options: {
-              scales: {
-                  y: {
-                      beginAtZero: true
-                  }
-              }
-          }
-      }); 
-  }   
+
+        // console.log(labelYears);
+        // console.log(dataStartBalance);
+
+        for (let x = 2020; x < 2035; x++) {
+            this.labels.push(x);
+        }
+
+        this.graphData = {
+            // labels: this.labels,                // The data on the X-axis (our years)
+            labels: labelYears,
+            datasets: [{
+            label: 'Yearly Contribution Chart',
+            // data: [65, 59, 80, 81, 56, 55, 40], // The data on Y-axis (our start balance)
+            data: dataStartBalance,
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+            }]
+        }  
+
+        this.myChart = new Chart("canvas", {
+            type: 'line',
+            data: this.graphData,
+            options: {
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        }); 
+    }
+    
 }
