@@ -1,0 +1,22 @@
+<ul class="list-output-data list-data-name">        
+    <li>Year</li>
+    <li>Age</li>
+    <li>Start Balance ($)</li>
+    <li>Contributions ($)</li>
+    <li>Earnings ($)</li>
+    <li>Fees ($)</li>
+    <li>Tax ($)</li>
+    <li>Withdrawals ($)</li>
+    <li>End Balance ($)</li>
+ </ul>
+<ul class="list-output-data" *ngFor = "let data of yearlyData">        
+   <li>{{data.year}}</li>
+   <li>{{data.age}}</li>
+   <li>{{data.startBalance}}</li>
+   <li>{{data.contributions}}</li>
+   <li>{{data.earnings}}</li>
+   <li>{{data.fees}}</li>
+   <li>{{data.tax}}</li>
+   <li>{{data.withdrawals === 0 ? '-' : data.withdrawals}}</li>
+   <li>{{data.endBalance}}</li>
+</ul>

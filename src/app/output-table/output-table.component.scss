@@ -1,0 +1,18 @@
+.data-table-container {
+    border: 2px solid rgba(0, 0, 0, 0.1);
+    padding: 8px;
+
+    h1 {    
+        text-align: center;
+        text-transform: uppercase;
+        margin: 0;
+        color: #566dc9;
+    }
+    
+    .data-table {
+        border: 1px solid rgba(0, 0, 0, 0.1);
+        text-align: center;
+        margin: 16px 0;
+    }
+}
+

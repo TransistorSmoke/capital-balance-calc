@@ -1,0 +1,99 @@
+<!-- 
+    * Req #1 - ngModel in the <input> element, to tell Angular that it is a control (of the form).
+    * ngModel is a directive from the FormsModule package.
+    * Req #2 - the control's name (name attr), Angular uses this to identify which form input value (is identifiable) needs to be tracked
+-->
+
+<div id="inputBlock">  
+    <form class="inputForm" (ngSubmit)="onDataSubmit(formInputData)" #formInputData="ngForm">
+      <fieldset>
+        <legend>Enter Your Data</legend>
+        <div>
+            <label class="required" for="salary">Salary ($): </label>
+            <input type="number" ngModel name="salary" required>
+        </div>
+        <div>
+            <label class="required" >Contribution Rate (%): </label>
+            <input type="number" ngModel name="pctContribution" required>
+        </div>
+        
+        <div>
+            <label class="required">Inflation Rate (%): </label>
+            <input type="number" ngModel name="pctInflation" required>
+        </div>
+        <div>
+            <label class="required">Earnings (%): </label>
+            <input type="number" ngModel name="pctEarnings" required>
+        </div>
+        <div>
+            <label class="required">Fees (%): </label>
+            <input type="number" ngModel name="pctFees" required>
+        </div>
+        <div>
+            <label class="required">Tax (%): </label>
+            <input type="number" ngModel name="pctTax" required>
+        </div>
+        <div>
+            <label>Withdrawal Rate (%): </label>
+            <input type="number" ngModel name="pctWithdrawal">
+        </div> 
+
+        <hr>
+
+        <div>
+            <label>Withdrawal Start (Age): </label>
+            <input type="number" ngModel name="ageStartWithdrawal">
+        </div>
+        <div>
+            <label>Contributions End (Age): </label>
+            <input type="number" ngModel name="ageStopContribution">
+        </div>
+
+        <div class="error-msg" [hidden]="isHidden">
+            <p for="error-msg">Please enter required inputs</p>
+        </div>
+        
+        <button type="submit">Calculate</button>
+      </fieldset>
+      
+    </form>
+
+    
+</div>
+
+<app-output-view  *ngIf="isFormValid" [dataForView]= "formData" [hidden]="!isHidden"></app-output-view>
+
+<!-- <div class = "output-chart-table" hidden>    
+    <app-output-table [formDataToProcess] = "formInputData"></app-output-table>
+</div> -->
+
+
+<!-- 
+  Template-driven (TD) approach is used in this case for the following reasons:
+    1. I do not need to consider the testing process of the application at this stage.
+        * TD forms may have complicated issues with testing.
+
+    2. Reactive forms are a bit complicated i.e.
+        * need to form structure in TS
+        * HTML needs to be set up...
+        * bridge both of these... too complication for the goal of this app
+
+    3. TD form, on the other hand, is straightforward.
+          * Good and easy for small forms - no need to be complicated
+          * Scalability of this app is not considered. TD forms is good for this.
+
+
+
+
+  INFO: ACQUIRING THE FORM'S ALL INPUT DATA 
+  -----------------------------------------
+  * NOT FEASIBLE
+      * On the form element, local reference #formInputData passed to onDataSubmit() method will return HTMLFormElement
+          * HTMLFormElement is DOM format - difficult to access values we need and do other processes
+
+  * EASIER
+      * We set #formInputData ="NgForm".
+          * NgForm is a directive from which we can fetch exposed form data.
+          * NgForm is an object with a property of `value` where we can get form's `input` data.
+
+-->

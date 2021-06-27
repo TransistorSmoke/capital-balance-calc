@@ -1,0 +1,95 @@
+$gap: 16px;
+
+#inputBlock {    
+    display: flex;
+    justify-content: center;
+
+    margin: $gap/2 0;   
+      
+    .inputForm {        
+        margin: $gap 0;
+        padding: $gap*1.5 $gap*3;
+
+
+        fieldset {
+            border: 2px solid rgb(221, 221, 221);
+            padding: $gap;
+
+            // border-radius: 12px;
+        }
+
+        legend {
+            background-color: black;
+            padding: $gap/4 $gap;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+        }
+        div {
+            margin-bottom: $gap/2;
+            label {
+                display: inline-block;
+                width: 175px;
+                font-weight: bold;
+                
+                &.required::after {
+                    content: "*";
+                    color: rgb(255, 131, 131);
+                }
+            }
+            input {
+                padding: 6px $gap/2;
+                width: 120px;
+                border: 1px solid rgb(221, 221, 221);
+
+                text-align: right;
+
+                &[type=number]::-webkit-inner-spin-button, 
+                &[type=number]::-webkit-outer-spin-button { 
+                    -webkit-appearance: none; 
+                    margin: 0; 
+                }
+
+                &.ng-invalid {
+                    background-color: rgb(255, 248, 248);
+                }
+            }
+
+            &.error-msg {
+                p {
+                    color: rgb(255, 131, 131);                                            
+                    text-align: center;
+                    font-size: 0.8rem;                       
+                }
+            }
+        }
+
+        hr {
+            margin: $gap 0;
+            border: 1px solid rgba(128, 128, 128, 0.2);
+        }
+
+        button {
+            padding: 10px $gap*1.5;
+            margin: $gap auto;
+        
+            background-color: rgb(86, 109, 201);
+            border: none;
+            border-radius: $gap/4;
+            display: block;
+        
+            font-size: 16px;    
+            font-weight: bold;
+            color:rgb(255, 255, 255);
+            letter-spacing: 0.5px;
+        
+            transition: background-color 0.3s;
+        
+            &:hover {
+                background-color: rgba(86, 109, 201, 0.8);
+                transition: background-color 0.3s;
+            }
+        }
+    }    
+}

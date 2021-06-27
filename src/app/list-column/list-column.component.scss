@@ -1,0 +1,49 @@
+.list-output-data {
+    list-style-type: none;
+    display: inline-block;
+    font-size: 0.7rem;
+    margin-bottom: 8px;
+    padding: 0;
+
+    
+    li {
+        border-top: 1px solid grey;
+        border-left: 1px solid grey;
+        border-right: 1px solid grey;
+        width: 100%;     
+        box-sizing: border-box;
+        padding: 2px;
+        text-align: right;
+               
+        &:last-child  {
+            border-bottom: 1px solid grey;
+        }
+
+        &:nth-child(-n + 2) {
+            font-weight: bold;
+            text-align: center;
+        }
+    }
+
+    .list-emphasis {
+        font-weight: bold;
+    }
+
+    &:last-child {
+        li {
+            border-right: 1px solid grey;
+        }
+    }
+}
+
+.list-data-name {
+
+    li {
+        font-weight: bold;
+        text-transform: uppercase;
+        text-align: left;
+    }
+
+    
+}
+
