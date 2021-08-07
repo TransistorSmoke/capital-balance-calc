@@ -5,6 +5,8 @@ Optional inputs are withdrawal rate and withdrawal start and contribution end ag
 
 Resulting yearly contribution data for X number of years is tabulated and put to graph.
 
+See working sample here: https://capita-balance-calc.netlify.app/
+
 =================================
 # AngularCbp
 
