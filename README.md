@@ -1,3 +1,11 @@
+This a sample capital balance calculator created with Angular 12.
+
+The app requires the following as compulsory input: annual salary and contribution, inflation, earnings, fees and tax rates. 
+Optional inputs are withdrawal rate and withdrawal start and contribution end ages.
+
+Resulting yearly contribution data for X number of years is tabulated and put to graph.
+
+=================================
 # AngularCbp
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.5.
